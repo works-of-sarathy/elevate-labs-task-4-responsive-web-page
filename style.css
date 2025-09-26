@@ -1,0 +1,260 @@
+/* CSS Variables for theme */
+:root {
+  --color-primary: #667eea;
+  --color-secondary: #764ba2;
+  --color-accent: #f39c12;
+  --color-accent-hover: #d35400;
+  --color-bg-dark: #222;
+  --color-bg-dark-alt: #333;
+  --font-family: 'Poppins', sans-serif;
+
+  --font-size-base: 1rem;
+  --font-size-large: 2.5rem;
+  --font-size-medium: 1.8rem;
+  --font-size-small: 0.875rem;
+  --transition-speed: 0.3s;
+}
+
+/* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family);
+}
+
+body {
+  line-height: 1.6;
+  font-size: var(--font-size-base);
+  background-color: #fff;
+  color: #222;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: 100;
+}
+.skip-link:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  background: var(--color-accent);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  outline: none;
+  text-decoration: none;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-bg-dark);
+  color: #fff;
+  padding: 1rem 2rem;
+  position: relative;
+  z-index: 10;
+}
+
+header .logo {
+  font-weight: 600;
+  font-size: 1.25rem;
+  outline: none;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+}
+
+header nav ul li {
+  margin-left: 1.25rem;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  transition: color var(--transition-speed) ease;
+  outline-offset: 2px;
+}
+
+header nav ul li a:hover,
+header nav ul li a:focus {
+  color: var(--color-accent);
+  outline: none;
+}
+
+/* Mobile menu toggle button */
+.menu-toggle {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  color: #fff;
+  transition: color var(--transition-speed);
+  outline-offset: 2px;
+}
+.menu-toggle:hover,
+.menu-toggle:focus {
+  color: var(--color-accent-hover);
+  outline: none;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+  color: #fff;
+  text-align: center;
+  padding: 6rem 1.25rem;
+  animation: fadeIn 1s ease forwards;
+}
+
+.hero h1 {
+  font-size: var(--font-size-large);
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  max-width: 37.5rem; /* 600px */
+  margin: 0 auto 1.5rem;
+  font-size: var(--font-size-base);
+}
+
+.cta-btn {
+  display: inline-block;
+  background: var(--color-accent);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border-radius: 0.3125rem; /* 5px */
+  font-weight: 600;
+  transition: background var(--transition-speed) ease;
+}
+
+.cta-btn:hover,
+.cta-btn:focus {
+  background: var(--color-accent-hover);
+  outline: none;
+}
+
+/* Footer */
+footer {
+  background: var(--color-bg-dark);
+  color: #fff;
+  text-align: center;
+  padding: 1.25rem 0.625rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--font-size-small);
+}
+
+footer .social-links a {
+  color: var(--color-accent);
+  text-decoration: none;
+  margin: 0 0.3125rem;
+  outline-offset: 2px;
+}
+
+footer .social-links a:hover,
+footer .social-links a:focus {
+  text-decoration: underline;
+  outline: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  header {
+    flex-wrap: wrap;
+  }
+
+  header nav {
+    display: none;
+    width: 100%;
+    background: var(--color-bg-dark-alt);
+    position: absolute;
+    top: 3.75rem; /* 60px */
+    left: 0;
+    padding: 0.625rem 0;
+    border-top: 1px solid #444;
+    z-index: 9;
+  }
+
+  header nav.active {
+    display: block;
+  }
+
+  header nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  header nav ul li {
+    margin: 0.625rem 0;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .hero {
+    padding: 4rem 1rem;
+  }
+
+  .hero h1 {
+    font-size: var(--font-size-medium);
+  }
+
+  .hero p {
+    font-size: var(--font-size-small);
+  }
+}
+
+/* Smaller devices */
+@media (max-width: 480px) {
+  header {
+    padding: 0.75rem 1rem;
+  }
+
+  header .logo {
+    font-size: 1rem;
+  }
+
+  .hero {
+    padding: 3rem 1rem;
+  }
+
+  .hero h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero p {
+    font-size: 0.75rem;
+  }
+
+  .cta-btn {
+    padding: 0.625rem 1.25rem;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
